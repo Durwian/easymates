@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mostrarExercicis();
   }
   function mostrarExercicis() {
-    const llista = $('llista-exercicis'); llista.replaceChildren(); $('missatge-exercicis').textContent = '';
+    const llista = $('llista-exercicis'); while(llista.firstChild) llista.removeChild(llista.firstChild); $('missatge-exercicis').textContent = '';
     exercicis.forEach((op,i) => {
       const card=document.createElement('article'); card.className='exercici';
       const title=document.createElement('h3'); title.textContent=`Exercici ${i+1}`;
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     factorActual=factor; multiplicadorActual=mult;
     partsModel=[Math.floor(factor/100)*100,Math.floor((factor%100)/10)*10,factor%10];
-    $('missatge-model').textContent=''; $('missatge-model').className='missatge'; $('model-visual').replaceChildren();
+    $('missatge-model').textContent=''; $('missatge-model').className='missatge'; while($('model-visual').firstChild) $('model-visual').removeChild($('model-visual').firstChild);
     const table=document.createElement('div'); table.className='taula-rectangular';
     const multiplier=document.createElement('div'); multiplier.className='factor-vertical'; multiplier.textContent=`× ${mult}`;
     const right=document.createElement('div'), header=document.createElement('div'); right.className='part-dreta-model'; header.className='capcalera-rectangular';
