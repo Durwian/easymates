@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#4969d8">
+  <meta name="description" content="Practica les taules de multiplicar i aprèn amb el model rectangular.">
+  <title>Multiplicacions divertides</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+<header class="capcalera"><div class="capcalera-interior">
+  <div class="marca" aria-hidden="true">✖️</div>
+  <div><h1>Multiplicacions divertides</h1><p>Practica, descobreix i aprèn al teu ritme!</p></div>
+  <button type="button" id="boto-install" class="boto-install" hidden>Instal·la l'app</button>
+</div></header>
+<main class="contenidor">
+  <section class="targeta configuracio">
+    <h2>📚 1. Tria les taules</h2>
+    <p>Marca les taules que vols practicar. Si no en selecciones cap, s'utilitzaran totes les taules de l'1 al 9.</p>
+    <form id="formulari-taules">
+      <fieldset><legend>Taules de multiplicar</legend><div class="taules-checkboxes">
+        <label><input type="checkbox" name="taula" value="1"> 1</label><label><input type="checkbox" name="taula" value="2"> 2</label>
+        <label><input type="checkbox" name="taula" value="3"> 3</label><label><input type="checkbox" name="taula" value="4"> 4</label>
+        <label><input type="checkbox" name="taula" value="5"> 5</label><label><input type="checkbox" name="taula" value="6"> 6</label>
+        <label><input type="checkbox" name="taula" value="7"> 7</label><label><input type="checkbox" name="taula" value="8"> 8</label>
+        <label><input type="checkbox" name="taula" value="9"> 9</label>
+      </div></fieldset>
+      <div class="fila-botons"><button class="boto boto-principal" type="submit">Desa les taules</button><span id="estat-taules" role="status" aria-live="polite"></span></div>
+    </form>
+  </section>
+  <section class="targeta">
+    <h2>🎯 2. Tria el nivell</h2><p>Generarem tres multiplicacions perquè les puguis resoldre.</p>
+    <div class="nivells">
+      <button type="button" class="boto-nivell" data-nivell="1"><span class="emoji">🟢</span><strong>Nivell 1</strong><span>Una xifra × una xifra</span></button>
+      <button type="button" class="boto-nivell" data-nivell="2"><span class="emoji">🟠</span><strong>Nivell 2</strong><span>Dues xifres × una xifra</span></button>
+      <button type="button" class="boto-nivell" data-nivell="3"><span class="emoji">🔴</span><strong>Nivell 3</strong><span>Tres xifres × una xifra</span></button>
+    </div>
+  </section>
+  <section id="zona-exercicis" class="targeta" hidden>
+    <h2 id="titol-exercicis">Les teves multiplicacions</h2><p>Escriu cada resultat a sota de l'operació.</p>
+    <form id="formulari-exercicis"><div id="llista-exercicis" class="llista-exercicis"></div>
+      <div class="fila-botons"><button type="submit" class="boto boto-verd">Comprova les respostes</button><button type="button" id="boto-noves" class="boto boto-principal">Noves multiplicacions</button></div>
+    </form><p id="missatge-exercicis" class="missatge" role="status" aria-live="polite"></p>
+  </section>
+  <section class="targeta model-targeta" id="zona-model">
+    <h2>🧩 3. Espai de proves: model rectangular</h2>
+    <p>Descompon el nombre en centenes, desenes i unitats. Multiplica cada part i suma els resultats parcials.</p>
+    <div class="controls-model">
+      <label>Nombre que multipliquem<input type="number" id="factor-model" min="1" max="999" inputmode="numeric" value="132"></label>
+      <label>Multiplicador<select id="multiplicador-model"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option selected>6</option><option>7</option><option>8</option><option>9</option></select></label>
+      <button type="button" id="boto-model" class="boto boto-principal">Crea el model</button>
+    </div>
+    <div id="model-visual" class="model-visual" aria-label="Model rectangular de la multiplicació"></div>
+    <div class="targeta-suau"><h3>1. Escriu els productes parcials</h3><p class="ajuda">Multiplica cada part pel multiplicador.</p><div id="camps-parcials" class="camps-parcials"></div></div>
+    <div class="targeta-suau"><h3>2. Suma els resultats parcials</h3>
+      <div class="suma-model"><input type="number" id="suma1" inputmode="numeric" placeholder="?" aria-label="Primer producte parcial"><span>+</span><input type="number" id="suma2" inputmode="numeric" placeholder="?" aria-label="Segon producte parcial"><span>+</span><input type="number" id="suma3" inputmode="numeric" placeholder="?" aria-label="Tercer producte parcial"></div>
+      <label class="camp-resultat">Resultat final<input type="number" id="resultat-model" inputmode="numeric" placeholder="Escriu el resultat"></label>
+    </div>
+    <div class="fila-botons"><button type="button" id="comprovar-model" class="boto boto-verd">Comprova el model</button><button type="button" id="nou-model" class="boto boto-principal">Un altre exemple</button></div>
+    <p id="missatge-model" class="missatge" role="status" aria-live="polite"></p>
+  </section>
+  <section class="targeta instruccions"><h2>💡 Com es juga?</h2><ol><li>Selecciona les taules de l'1 al 9 i desa la selecció.</li><li>Tria un nivell per generar tres multiplicacions.</li><li>Escriu les respostes i comprova-les.</li><li>Practica la descomposició amb el model rectangular.</li></ol></section>
+  <p class="nota-offline">📴 Després de la primera càrrega en línia, l'aplicació pot funcionar sense connexió.</p>
+</main>
+<footer>🌟 Aprendre matemàtiques també pot ser divertit!</footer>
+</body></html>
